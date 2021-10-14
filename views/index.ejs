@@ -19,6 +19,12 @@
     <% } else { %>
         <h3>Nenhum erro!</h3>
     <% } %>
+
+    <% produtos.forEach(produto => { %>
+        <hr>
+        <h4><%= produto.nome %></h4>
+        <h5><%= produto.preco %></h5>
+    <% }) %>
 </body>
 
 </html>
