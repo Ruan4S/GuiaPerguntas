@@ -8,26 +8,20 @@
     <title>Guia Perguntas</title>
 
     <link rel="stylesheet" href="/scss/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 
 <body>
-    <h1>Guia Perguntas</h1>
-    <hr>
-    <p>Nome: <%= nome %></p>
-    <p>Linguagem favorita: <%= lang %></p>
+    <h1>ASDAS</h1>
 
-    <% if (msg) { %>
-        <h3>Isso é uma msg de erro!</h3>
-    <% } else { %>
-        <h3>Nenhum erro!</h3>
-    <% } %>
-
-    <% produtos.forEach(produto => { %>
-        <hr>
-        <h4><%= produto.nome %></h4>
-        <h5><%= produto.preco %></h5>
-    <% }) %>
-    <img src="/img/" alt="Teste de imagem">
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="/js/booststrap.min.js"></script>
 </body>
 
 </html>
