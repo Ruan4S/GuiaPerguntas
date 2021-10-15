@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 //Importando conexão com banco de dados
 const connection = require('./database/database');
+const Pergunta = require('./database/Pergunta');
 
 //Database
 connection
@@ -24,7 +25,11 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 //Rotas
 app.get('/', (req, res) => {
-    res.render('index');
+    Pergunta.findAll({raw: true}).then(perguntas => {
+        res.render('index', {
+            perguntas: perguntas
+        });
+    });
 });
 
 app.get('/perguntar', (req, res) => {
@@ -34,7 +39,12 @@ app.get('/perguntar', (req, res) => {
 app.post('/salvarpergunta', (req, res) => {
     let titulo = req.body.titulo;
     let descricao = req.body.descricao;
-    res.send(`${titulo} + ${descricao}`)
+    Pergunta.create({
+        titulo: titulo,
+        descricao: descricao,
+    }).then(() => {
+        res.redirect('/');
+    })
 });
 
 app.listen(8080, () => console.log('Servidor iniciado'));
