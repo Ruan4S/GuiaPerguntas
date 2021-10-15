@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 //Importando conexão com banco de dados
 const connection = require('./database/database');
 const Pergunta = require('./database/Pergunta');
+const Resposta = require('./database/Resposta');
 
 //Database
 connection
@@ -62,6 +63,16 @@ app.get('/pergunta/:id', (req, res) => {
             res.redirect('/');
         }
     })
+});
+
+app.post('/responder', (req, res) => {
+    let corpo = req.body.corpo;
+    let perguntaId = req.body.pergunta;
+
+    Resposta.create({
+        corpo: corpo,
+        perguntaId: perguntaId
+    }).then(() => res.redirect(`/pergunta/${perguntaId}`));
 });
 
 app.listen(8080, () => console.log('Servidor iniciado'));
